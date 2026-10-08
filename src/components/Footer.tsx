@@ -10,28 +10,26 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-14 sm:py-16">
+    <footer className="border-t border-border py-12 sm:py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-2">
-            <p className="font-display text-sm font-bold tracking-[0.2em] text-light-cream">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-5">
+            <p className="font-display text-xs font-semibold tracking-[0.22em] text-light-cream">
               {site.name}
             </p>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
+            <p className="mt-4 max-w-sm text-[0.875rem] leading-relaxed text-muted">
               Digital products, websites and automation for businesses that
               want clarity, craft and systems that actually work.
             </p>
           </div>
-          <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-muted">
-              NAVIGATE
-            </p>
-            <ul className="mt-4 space-y-2">
+          <div className="lg:col-span-3">
+            <p className="eyebrow text-[0.625rem]">Navigate</p>
+            <ul className="mt-4 space-y-2.5">
               {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-light-cream/90 transition-colors hover:text-accent"
+                    className="text-[0.875rem] text-light-cream/85 transition-colors duration-200 hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -39,15 +37,13 @@ export function Footer() {
               ))}
             </ul>
           </div>
-          <div>
-            <p className="text-xs font-semibold tracking-[0.2em] text-muted">
-              CONNECT
-            </p>
-            <ul className="mt-4 space-y-2 text-sm">
+          <div className="lg:col-span-4">
+            <p className="eyebrow text-[0.625rem]">Connect</p>
+            <ul className="mt-4 space-y-2.5 text-[0.875rem]">
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-light-cream/90 transition-colors hover:text-accent"
+                  className="text-light-cream/85 transition-colors duration-200 hover:text-accent"
                 >
                   {site.email}
                 </a>
@@ -57,7 +53,7 @@ export function Footer() {
                   href={site.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-light-cream/90 transition-colors hover:text-accent"
+                  className="text-light-cream/85 transition-colors duration-200 hover:text-accent"
                 >
                   Instagram
                 </a>
@@ -67,7 +63,7 @@ export function Footer() {
                   href={site.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-light-cream/90 transition-colors hover:text-accent"
+                  className="text-light-cream/85 transition-colors duration-200 hover:text-accent"
                 >
                   WhatsApp
                 </a>
@@ -75,8 +71,8 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <p className="mt-12 border-t border-border pt-8 text-xs text-muted">
-          © {site.year} Your Agency. All rights reserved.
+        <p className="mt-12 border-t border-border pt-6 text-xs text-muted/90">
+          © {site.year} {site.name}. All rights reserved.
         </p>
       </div>
     </footer>

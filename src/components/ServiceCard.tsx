@@ -13,21 +13,19 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
   return (
     <motion.article
-      className="group rounded-2xl border border-border bg-transparent p-6 transition-colors hover:border-light-cream/20 hover:bg-surface/40 sm:p-8"
-      whileHover={reduced ? undefined : { y: -3 }}
-      transition={{ duration: 0.25 }}
+      className="group flex h-full flex-col border border-border/80 bg-transparent p-6 transition-[border-color,background-color,transform] duration-200 hover:border-light-cream/20 hover:bg-surface/35 sm:p-7"
+      whileHover={reduced ? undefined : { y: -2 }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <p className="text-xs font-semibold tracking-[0.2em] text-muted">
-        {service.number}
-      </p>
-      <h3 className="mt-4 font-display text-xl font-bold text-light-cream sm:text-2xl">
+      <p className="eyebrow text-[0.625rem]">{service.number}</p>
+      <h3 className="mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-light-cream sm:text-xl">
         {service.title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+      <p className="mt-3 flex-1 text-[0.875rem] leading-relaxed text-muted sm:text-[0.9375rem]">
         {service.description}
       </p>
       <div
-        className="mt-6 h-px w-12 bg-border transition-all duration-300 group-hover:w-20 group-hover:bg-accent/80"
+        className="mt-6 h-px w-10 bg-border transition-[width,background-color] duration-300 group-hover:w-14 group-hover:bg-accent/50"
         aria-hidden
       />
     </motion.article>

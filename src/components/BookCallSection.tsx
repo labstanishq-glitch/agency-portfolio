@@ -1,30 +1,28 @@
-import { Button } from "@/components/ui/Button";
 import { BookingForm } from "@/components/BookingForm";
 import { Reveal } from "@/components/motion/Reveal";
 
 export function BookCallSection() {
   return (
-    <section id="book" className="scroll-mt-28 border-t border-border py-20 sm:py-28">
+    <section
+      id="book"
+      className="section-pad scroll-mt-24 border-t border-border bg-surface/15"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
-          <div className="mb-10 flex flex-col gap-6 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-2xl">
-              <h2 className="font-display text-3xl font-bold leading-tight tracking-tight text-light-cream sm:text-4xl md:text-[2.75rem]">
-                LET&apos;S BUILD SOMETHING
-                <br />
-                WORTH TALKING ABOUT.
-              </h2>
-              <p className="mt-4 text-base text-muted sm:text-lg">
-                Tell us what you&apos;re building, what you&apos;re trying to
-                improve, or where your business is getting stuck.
-              </p>
-            </div>
-            <Button href="#book" variant="primary" className="hidden sm:inline-flex">
-              Book a Call →
-            </Button>
+          <div className="mb-10 max-w-2xl sm:mb-12">
+            <p className="eyebrow mb-4">Book a call</p>
+            <h2
+              className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-light-cream"
+            >
+              Let&apos;s build something worth talking about.
+            </h2>
+            <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted sm:text-base">
+              Tell us what you&apos;re building, what you&apos;re trying to
+              improve, or where your business is getting stuck.
+            </p>
           </div>
         </Reveal>
-        <Reveal delay={0.08}>
+        <Reveal delay={0.06}>
           <BookingForm />
         </Reveal>
       </div>

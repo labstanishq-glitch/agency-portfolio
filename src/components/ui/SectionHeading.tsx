@@ -14,12 +14,16 @@ export function SectionHeading({
   const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
 
   return (
-    <header className={`max-w-3xl ${alignClass} ${className}`}>
-      <h2 className="font-display text-3xl font-bold tracking-tight text-light-cream sm:text-4xl md:text-[2.75rem] md:leading-tight">
+    <header className={`max-w-2xl ${alignClass} ${className}`}>
+      <h2
+        className="font-display text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-light-cream"
+      >
         {title}
       </h2>
       {subtitle ? (
-        <p className="mt-4 text-base text-muted sm:text-lg">{subtitle}</p>
+        <p className="mt-4 max-w-xl text-[0.9375rem] leading-relaxed text-muted sm:text-base">
+          {subtitle}
+        </p>
       ) : null}
     </header>
   );

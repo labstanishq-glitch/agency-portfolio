@@ -16,40 +16,10 @@ export type Project = {
   description: string;
   href?: string;
   external?: boolean;
+  concept?: boolean;
 };
 
-export const projects: Project[] = [
-  {
-    number: "01",
-    name: "CALITRIBE",
-    category: "Website Design & Development",
-    description:
-      "A premium digital presence built for a calisthenics and strength training brand in Andaman.",
-    href: "https://calitribe.in",
-    external: true,
-  },
-  {
-    number: "02",
-    name: "NORTHLINE COMMERCE",
-    category: "E-commerce & Web App",
-    description:
-      "A streamlined storefront and inventory workflow for a growing regional retail brand.",
-  },
-  {
-    number: "03",
-    name: "FIELDWORK OPS",
-    category: "Custom Software",
-    description:
-      "Internal tooling to coordinate field teams, schedules and client updates in one place.",
-  },
-  {
-    number: "04",
-    name: "ATELIER STUDIO",
-    category: "Brand Website",
-    description:
-      "An editorial portfolio site for a creative studio with a focus on craft and clarity.",
-  },
-];
+export const projects: Project[] = [];
 
 export type Service = {
   number: string;
