@@ -124,3 +124,135 @@ export const needOptions = [
 export type NeedOption = (typeof needOptions)[number];
 
 export const contactMethods = ["Email", "WhatsApp / Phone", "Either"] as const;
+
+export type PricingMarket = "india" | "international";
+
+export type WebsitePackage = {
+  id: string;
+  name: string;
+  prices: Record<PricingMarket, string>;
+  features: string[];
+  ctaLabel: "Get started" | "Request a quote";
+  featured?: boolean;
+};
+
+export const websitePackages: WebsitePackage[] = [
+  {
+    id: "starter",
+    name: "Starter",
+    prices: { india: "₹9,999", international: "$299" },
+    features: [
+      "Up to 5 pages",
+      "Responsive design",
+      "Contact form or WhatsApp integration",
+      "Basic on-page SEO",
+      "Performance optimization",
+      "2 revision rounds",
+      "Estimated 5–7 business days",
+    ],
+    ctaLabel: "Get started",
+  },
+  {
+    id: "business",
+    name: "Business",
+    prices: { india: "₹19,999", international: "$599" },
+    featured: true,
+    features: [
+      "Up to 10 pages",
+      "Premium custom UI and animations",
+      "Portfolio or project gallery",
+      "WhatsApp and enquiry forms",
+      "On-page SEO and metadata",
+      "Analytics integration",
+      "2 revision rounds",
+      "Estimated 7–12 business days",
+    ],
+    ctaLabel: "Get started",
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    prices: { india: "₹39,999", international: "$1,299" },
+    features: [
+      "Up to 15 pages",
+      "Bespoke design and motion",
+      "Advanced project/service showcases",
+      "Custom forms and third-party integrations",
+      "Technical SEO foundations",
+      "Analytics and conversion tracking",
+      "3 revision rounds",
+      "Estimated 12–20 business days",
+    ],
+    ctaLabel: "Get started",
+  },
+];
+
+export type TieredOffering = {
+  name: string;
+  prices: Record<PricingMarket, string> | null;
+  pricePrefix?: "from";
+  ctaLabel: "Get started" | "Request a quote";
+};
+
+export const webAppOfferings: TieredOffering[] = [
+  {
+    name: "MVP / Prototype",
+    prices: { india: "₹49,999", international: "$1,499" },
+    pricePrefix: "from",
+    ctaLabel: "Request a quote",
+  },
+  {
+    name: "Business Application",
+    prices: { india: "₹99,999", international: "$2,999" },
+    pricePrefix: "from",
+    ctaLabel: "Request a quote",
+  },
+  {
+    name: "Complex platforms",
+    prices: null,
+    ctaLabel: "Request a quote",
+  },
+];
+
+export const maintenancePlans: TieredOffering[] = [
+  {
+    name: "Essential Care",
+    prices: { india: "₹1,499", international: "$49" },
+    ctaLabel: "Get started",
+  },
+  {
+    name: "Business Care",
+    prices: { india: "₹2,999", international: "$99" },
+    ctaLabel: "Get started",
+  },
+  {
+    name: "Priority Care",
+    prices: { india: "₹5,999", international: "$199" },
+    ctaLabel: "Get started",
+  },
+];
+
+export const seoPlans: TieredOffering[] = [
+  {
+    name: "SEO Foundation",
+    prices: { india: "₹7,500", international: "$199" },
+    ctaLabel: "Get started",
+  },
+  {
+    name: "Growth SEO",
+    prices: { india: "₹14,999", international: "$399" },
+    ctaLabel: "Get started",
+  },
+  {
+    name: "Competitive SEO",
+    prices: { india: "₹29,999", international: "$799" },
+    ctaLabel: "Get started",
+  },
+];
+
+export const pricingDisclaimers = [
+  "Domain registration and hosting are charged separately.",
+  "Third-party subscriptions, paid APIs and usage fees are excluded unless explicitly quoted.",
+  "Maintenance scope and monthly update limits must be agreed before purchase.",
+  "Prices are starting prices. Complex integrations, extra pages and custom functionality require a tailored quote.",
+];
