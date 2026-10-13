@@ -7,11 +7,13 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 type ButtonVariant = "primary" | "secondary" | "ghost";
 
 type ButtonProps = {
-  href: string;
+  href?: string;
   children: React.ReactNode;
   variant?: ButtonVariant;
   className?: string;
   external?: boolean;
+  type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 const base =
@@ -32,6 +34,8 @@ export function Button({
   variant = "primary",
   className = "",
   external,
+  type = "button",
+  onClick,
 }: ButtonProps) {
   const reduced = useReducedMotion();
   const classes = `${base} ${variants[variant]} ${className}`;
@@ -49,22 +53,30 @@ export function Button({
     </motion.span>
   );
 
-  if (external) {
+  if (href) {
+    if (external) {
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block"
+        >
+          {content}
+        </a>
+      );
+    }
+
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-block"
-      >
+      <Link href={href} className="inline-block">
         {content}
-      </a>
+      </Link>
     );
   }
 
   return (
-    <Link href={href} className="inline-block">
+    <button type={type} onClick={onClick} className="inline-block">
       {content}
-    </Link>
+    </button>
   );
 }

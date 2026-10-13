@@ -4,7 +4,7 @@ import { site } from "@/lib/data";
 const footerLinks = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "Discuss", href: "#discuss" },
   { label: "About", href: "#about" },
   { label: "Book a Call", href: "#book" },
 ];
