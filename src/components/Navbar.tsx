@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { site } from "@/lib/data";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const links = [
@@ -51,9 +51,20 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="font-display text-[0.7rem] font-semibold tracking-[0.22em] text-light-cream transition-colors hover:text-cream sm:text-xs"
+          className="group inline-flex min-w-0 items-center gap-2 text-light-cream transition-colors hover:text-cream sm:gap-2.5"
+          aria-label="Valtrex Studios home"
         >
-          {site.name}
+          <Image
+            src="/branding/valtrex-logo.png"
+            alt=""
+            width={1024}
+            height={1024}
+            priority
+            className="h-[1.3rem] w-[1.3rem] shrink-0 sm:h-6 sm:w-6"
+          />
+          <span className="whitespace-nowrap font-[family-name:var(--font-space-grotesk)] text-[0.68rem] font-bold tracking-[0.1em] text-inherit transition-colors group-hover:text-cream min-[360px]:text-[0.7rem] min-[360px]:tracking-[0.12em] sm:text-xs">
+            VALTREX STUDIOS
+          </span>
         </Link>
 
         <ul className="hidden items-center gap-7 md:flex">
