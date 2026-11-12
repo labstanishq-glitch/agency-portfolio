@@ -17,9 +17,31 @@ export type Project = {
   href?: string;
   external?: boolean;
   concept?: boolean;
+  type?: string;
+  status?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
 };
 
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    number: "01",
+    name: "Pattam Café",
+    category: "Website Development",
+    type: "Café Website",
+    status: "Completed",
+    description:
+      "A modern café website designed to showcase the brand, ambience and offerings through a clean and engaging digital experience.",
+    href: "https://pattam.co",
+    external: true,
+    image: {
+      src: "/work/pattam-cafe.png",
+      alt: "Pattam Café website homepage, showing the brand, headline, and signature dishes.",
+    },
+  },
+];
 
 export type Service = {
   number: string;

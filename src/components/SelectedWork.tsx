@@ -13,8 +13,11 @@ export function SelectedWork() {
         {projects.length > 0 ? (
           <ul className="grid gap-5 sm:grid-cols-2 sm:gap-6">
             {projects.map((project, i) => (
-              <li key={project.number}>
-                <Reveal delay={i * 0.05}>
+              <li
+                key={project.number}
+                className={project.image ? "sm:col-span-2" : undefined}
+              >
+                <Reveal delay={i * 0.05} className="h-full">
                   <ProjectCard project={project} />
                 </Reveal>
               </li>
