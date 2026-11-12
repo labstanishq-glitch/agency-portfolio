@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -70,7 +69,7 @@ export function Hero() {
               className="mt-9 flex flex-col gap-4 sm:mt-10 sm:flex-row sm:items-center sm:gap-6"
             >
               <Button href="#book">Book a Call</Button>
-              <Link
+              <a
                 href="#work"
                 className="inline-flex items-center text-[0.8125rem] font-medium text-muted transition-colors duration-200 hover:text-light-cream"
               >
@@ -78,7 +77,7 @@ export function Hero() {
                 <span className="ml-1.5 text-light-cream/70" aria-hidden>
                   ↓
                 </span>
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
 

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { site } from "@/lib/data";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -63,7 +64,7 @@ export function Navbar() {
             className="h-[1.3rem] w-[1.3rem] shrink-0 sm:h-6 sm:w-6"
           />
           <span className="whitespace-nowrap font-[family-name:var(--font-space-grotesk)] text-[0.68rem] font-bold tracking-[0.1em] text-inherit transition-colors group-hover:text-cream min-[360px]:text-[0.7rem] min-[360px]:tracking-[0.12em] sm:text-xs">
-            VALTREX STUDIOS
+            {site.name}
           </span>
         </Link>
 

@@ -1,8 +1,8 @@
 export const site = {
-  name: "YOUR AGENCY",
-  title: "Your Agency — Digital Products, Websites & Automation",
+  name: "VALTREX STUDIOS",
+  title: "Valtrex Studios | Digital Products & Growth",
   description:
-    "Websites, apps, AI automation and custom digital systems for ambitious businesses. Design, development and automation with one focused team.",
+    "Valtrex Studios builds websites, apps, AI automation and custom digital systems that help ambitious businesses grow. Design, development and growth with one focused team.",
   email: "hello@youragency.com",
   instagram: "https://instagram.com/youragency",
   whatsapp: "https://wa.me/0000000000",

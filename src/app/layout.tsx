@@ -24,7 +24,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: site.title,
   description: site.description,
-  metadataBase: new URL("https://youragency.com"),
+  metadataBase: new URL("https://valtrexstudios.com"),
   openGraph: {
     title: site.title,
     description: site.description,

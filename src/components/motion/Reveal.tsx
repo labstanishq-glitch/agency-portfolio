@@ -32,7 +32,7 @@ export function Reveal({
   return (
     <Component
       className={className}
-      initial="hidden"
+      initial={false}
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
       variants={variants}
