@@ -43,14 +43,6 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-[0.875rem]">
               <li>
                 <a
-                  href={`mailto:${site.email}`}
-                  className="text-light-cream/85 transition-colors duration-200 hover:text-accent"
-                >
-                  {site.email}
-                </a>
-              </li>
-              <li>
-                <a
                   href={site.instagram}
                   target="_blank"
                   rel="noopener noreferrer"

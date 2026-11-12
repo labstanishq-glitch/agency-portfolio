@@ -3,7 +3,6 @@ export const site = {
   title: "Valtrex Studios | Digital Products & Growth",
   description:
     "Valtrex Studios builds websites, apps, AI automation and custom digital systems that help ambitious businesses grow. Design, development and growth with one focused team.",
-  email: "hello@youragency.com",
   instagram: "https://instagram.com/youragency",
   whatsapp: "https://wa.me/0000000000",
   year: 2026,

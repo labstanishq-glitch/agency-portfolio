@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { site } from "@/lib/data";
 
 type QuotePayload = {
   name?: string;
@@ -34,13 +33,7 @@ export async function POST(request: Request) {
 
   const webhookUrl = process.env.QUOTE_WEBHOOK_URL;
   if (!webhookUrl) {
-    return NextResponse.json(
-      {
-        reason: "not_configured",
-        contactEmail: site.email,
-      },
-      { status: 503 },
-    );
+    return NextResponse.json({ reason: "not_configured" }, { status: 503 });
   }
 
   try {
@@ -60,17 +53,11 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-      return NextResponse.json(
-        { reason: "delivery_failed", contactEmail: site.email },
-        { status: 502 },
-      );
+      return NextResponse.json({ reason: "delivery_failed" }, { status: 502 });
     }
 
     return NextResponse.json({ delivered: true });
   } catch {
-    return NextResponse.json(
-      { reason: "delivery_failed", contactEmail: site.email },
-      { status: 502 },
-    );
+    return NextResponse.json({ reason: "delivery_failed" }, { status: 502 });
   }
 }

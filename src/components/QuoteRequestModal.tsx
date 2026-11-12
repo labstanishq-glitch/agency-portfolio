@@ -42,9 +42,10 @@ function validate(values: FormState): FieldErrors {
   return errors;
 }
 
-function buildMailtoUrl(values: FormState): string {
-  const subject = encodeURIComponent(`Quote request: ${values.service}`);
+function buildWhatsAppUrl(values: FormState): string {
   const lines = [
+    `Quote request: ${values.service}`,
+    "",
     `Full name: ${values.name}`,
     `Email: ${values.email}`,
     values.company ? `Company: ${values.company}` : null,
@@ -55,8 +56,9 @@ function buildMailtoUrl(values: FormState): string {
     values.details,
   ].filter((line) => line !== null);
 
-  const body = encodeURIComponent(lines.join("\n"));
-  return `mailto:${site.email}?subject=${subject}&body=${body}`;
+  const text = encodeURIComponent(lines.join("\n"));
+  const base = site.whatsapp.split("?")[0];
+  return `${base}?text=${text}`;
 }
 
 const inputClass =
@@ -68,7 +70,7 @@ type SubmitState =
   | { kind: "idle" }
   | { kind: "submitting" }
   | { kind: "delivered" }
-  | { kind: "mailto" }
+  | { kind: "whatsapp" }
   | { kind: "error"; message: string };
 
 type QuoteRequestModalProps = {
@@ -110,9 +112,9 @@ export function QuoteRequestModal({
     };
   }, [open, onClose]);
 
-  const openMailtoDraft = (formValues: FormState) => {
-    window.location.href = buildMailtoUrl(formValues);
-    setSubmitState({ kind: "mailto" });
+  const openWhatsAppDraft = (formValues: FormState) => {
+    window.open(buildWhatsAppUrl(formValues), "_blank", "noopener,noreferrer");
+    setSubmitState({ kind: "whatsapp" });
   };
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -137,11 +139,10 @@ export function QuoteRequestModal({
 
       const data = (await res.json().catch(() => null)) as {
         reason?: string;
-        contactEmail?: string;
       } | null;
 
       if (res.status === 503 && data?.reason === "not_configured") {
-        openMailtoDraft(values);
+        openWhatsAppDraft(values);
         return;
       }
 
@@ -149,13 +150,14 @@ export function QuoteRequestModal({
         kind: "error",
         message:
           data?.reason === "delivery_failed"
-            ? "We couldn't deliver your request online. Use email instead."
-            : "Something went wrong. Try again or email us directly.",
+            ? "We couldn't deliver your request online. You can send it via WhatsApp instead."
+            : "Something went wrong. Try again or message us on WhatsApp.",
       });
     } catch {
       setSubmitState({
         kind: "error",
-        message: "Network error. Check your connection or send your request by email.",
+        message:
+          "Network error. Check your connection or send your request via WhatsApp.",
       });
     }
   };
@@ -224,23 +226,22 @@ export function QuoteRequestModal({
                     Close
                   </button>
                 </div>
-              ) : submitState.kind === "mailto" ? (
+              ) : submitState.kind === "whatsapp" ? (
                 <div className="border border-border bg-surface/30 p-6 text-center sm:p-8" role="status">
                   <p className="font-display text-lg font-semibold text-light-cream sm:text-xl">
-                    Complete your request in email
+                    Complete your request on WhatsApp
                   </p>
                   <p className="mx-auto mt-3 max-w-sm text-[0.875rem] leading-relaxed text-muted">
-                    Your email app should open with a draft addressed to{" "}
-                    <span className="text-light-cream/90">{site.email}</span>. Send
-                    the message to submit your quote request.
+                    WhatsApp should open with your quote details pre-filled. Send
+                    the message to submit your request.
                   </p>
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
                     <button
                       type="button"
                       className="inline-flex items-center justify-center rounded-sm bg-accent px-6 py-2.5 text-sm font-medium text-[#0B0D0F] transition-colors hover:bg-[#ff7d35]"
-                      onClick={() => openMailtoDraft(values)}
+                      onClick={() => openWhatsAppDraft(values)}
                     >
-                      Open email draft again
+                      Open WhatsApp again
                     </button>
                     <button
                       type="button"
@@ -262,9 +263,9 @@ export function QuoteRequestModal({
                       <button
                         type="button"
                         className="font-medium text-accent underline-offset-2 hover:underline"
-                        onClick={() => openMailtoDraft(values)}
+                        onClick={() => openWhatsAppDraft(values)}
                       >
-                        Send by email
+                        Send via WhatsApp
                       </button>
                     </p>
                   ) : null}
